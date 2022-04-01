@@ -12,6 +12,7 @@ export default function Nav(){
         <li className={styles.li}> <Link href='/basic/counter'>Counter</Link> </li>
         <li className={styles.li}> <Link href='/basic/bmi'>BMI</Link> </li>
         <li className={styles.li}> <Link href='/board/board-list'>Board List</Link> </li>
+        <li className={styles.li}> <Link href='/board/board-form'>Board form</Link> </li>
         <li className={styles.li}> <Link href='/game/game-list'>GameList</Link> </li>
         <li className={styles.li}> <Link href='/game/team-list'>TeamList</Link> </li>
         <li className={styles.li}> <Link href='/todo/todo-list'>Schedule</Link> </li>
