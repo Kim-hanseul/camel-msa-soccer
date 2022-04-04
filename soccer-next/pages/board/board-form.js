@@ -1,18 +1,24 @@
+import axios from "axios";
 import style from "board/style/board-form.module.css"
 import React,{useState} from 'react'
 
 
 export default function TeamForm(){
+    
     const [inputs, setInputs] = useState({})
-    const { passengerId, name, teamId, subject } = inputs;
-    const handleChange = e => {
-        e.preventDefault()
+
+    const handleChange = (e) => {
         const {value, name} = e.target; // e.target 은 왜 쓰는것인가?
         setInputs({...inputs, [name]: value})
     }
-    const handleSubmit = e => {
+    const handleSubmit = (e) => {
         e.preventDefault()
         alert(`등록할 게시글 : ${JSON.stringify(inputs)} `)
+        axios.post('http://localhost:5000/api/board/write', inputs)
+        .then(res=> {
+            alert(JSON.stringify(res.data))
+        })
+        .catch(err=>alert(err))
     }
     return (<>
         <h1>게시글 등록</h1>
@@ -41,7 +47,7 @@ export default function TeamForm(){
                 <label htmlFor="team">팀목록</label>
                 </div>
                 <div className={style.col75}>
-                <select id="teamId" name="teamId" >
+                <select id="teamId" name="teamId" onChange={handleChange} > 
                     <option value="">choose team</option>
                     <option value="K09">Fc seoul</option>
                     <option value="K02">Suwon Samseong blue wings</option>
