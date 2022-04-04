@@ -1,4 +1,3 @@
-import axios from "axios";
 import React, { useState } from "react";
 export default function Calc() {
 
@@ -6,24 +5,17 @@ export default function Calc() {
     const [result, setResult] = useState(``)
     const { num1, num2, opcode} = inputs
 
-    const onChange = e => {
+    const onChange = (e) => {
         e.preventDefault()
         const { value, name } = e.target
-        setInputs({...inputs,[name]: value})
+        setInputs({
+            ...inputs,
+            [name]: value
+        })
     }
 
-    const onClick = e => {
+    const onClick = async (e) => {
         e.preventDefault()
-        axios.post('http://localhost:5000/api/basic/bmi', inputs)
-        .then(res => {
-            const calc = res.data
-            document.getElementById('result-span').innerHTML = `
-            <h3> num1 : ${calc.num1}</h3>
-            <h3> opcode : ${calc.opcode}</h3>
-            <h3> num2 : ${calc.num2}</h3>
-            <h3> result : ${calc.calc}</h3>`
-        })
-        .catch(err => alert(err))
         switch (opcode){
             case "+" :
                 return setResult(Number(num1) + Number(num2))
@@ -36,14 +28,13 @@ export default function Calc() {
             case "%" :
                 return setResult(Number(num1) % Number(num2))
             default :
-                alert("error")
+                alert("히히히히")
         }
     }
 
-    return (<div>
-    <form action="" onSubmit={onClick}>
+    return (<>
         <h1>계산기</h1>
-        <div>
+        <form action="">
 
             <label htmlFor="">num1</label>
             <input name="num1" type="text" onChange={onChange} /> <br />
@@ -59,10 +50,11 @@ export default function Calc() {
 
             <label htmlFor="">num2</label>
             <input name="num2" type="text" onChange={onChange} /><br />
+
             <button onClick={onClick}>계산하기</button>
-        </div>
         </form>
-        <div>결과 : <span id="result-span"></span> </div>
-    </div>
+
+        <div>결과 : {result} </div>
+    </>
     )
 }
