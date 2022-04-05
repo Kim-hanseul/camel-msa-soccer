@@ -1,21 +1,17 @@
-// var express = require('express');
+const express = require('express');
+const {Router} = require('express');
+const userRouter = express.Router();
 
-// var router = express.Router();
+/* GET users listing. */
+userRouter.post("/sign-up", (req,res)=>{
+    const {userId, password, name, telephone} = req.body
+    console.log(`넘어온 JSON 값 : ${JSON.stringify(req.body)}`)
+    console.log(`userId : ${userId}`)
+    console.log(`password : ${password}`)
+    console.log(`name : ${name}`)
+    console.log(`telephoneNumber : ${telephone}`)
+    res.json(req.body)
+  })
 
-// /* GET users listing. */
-// router.get('/',function(req, res, next) {
-//     res.send('respond with a resource');
-// });
+  module.exports = userRouter;
 
-module.exports = function(app){
-    app.use((req, res, next)=> {
-        res.header(
-
-        )
-    });
-    // next();
-    app.get("", ()=>{})
-    app.post("", ()=>{})
-    app.update("", ()=>{})
-    app.delete("", ()=>{})
-}

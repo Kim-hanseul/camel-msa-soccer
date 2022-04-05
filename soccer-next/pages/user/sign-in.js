@@ -23,9 +23,9 @@ export default function Login(){
     <label htmlFor="">ID</label><br />
     <input type="text" name="id" onChange={handleChange} /><br />
     <label htmlFor="">Pw</label><br />
-    <input type="text" name="pw" onChange={handleChange}/><br/>
+    <input type="text" name="pw" onChange={handleChange}/><br />
     <label htmlFor="">Name</label><br />
     <input type="text" name="name" onChange={handleChange}/>
-    <button onClick={handleClick}>입력</button>
+    <button onClick={handleClick}>Enter</button>
     </>
 }
