@@ -1,7 +1,7 @@
 .nav {
     display: flex;
-    justify-content: space-between;
-    background-color: yellow;
+    justify-content: space-around;
+    background-color: rgb(232, 232, 157);
   }
   .li {
     display: inline;

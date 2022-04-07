@@ -4,6 +4,7 @@ import { useState } from "react"
 export default function SignUp(){
 
     const [inputs, setInputs] = useState({})
+    const proxy = 'http://localhost:5000'
 
     const handleChange =e=> {
         e.preventDefault()
@@ -11,16 +12,14 @@ export default function SignUp(){
         setInputs({...inputs, [name]: value})
     }
 
-    const handleSubmit =e=> {
+    const handleSubmit = e => {
         e.preventDefault()
-        axios.post('http://localhost:5000/api/user/sign-up', inputs)
-        .then(res=>{
-            const SignUp = res.data
-            document.getElementById('result-span').innerHTML = `
-            <h3> ${SignUp.name} 님의 회원가입을 축하합니다. </h3>
-            `
+        alert(`등록할 회원정보 : ${JSON.stringify(inputs)}`)
+        axios.post(proxy+'/api/user/sign-up', inputs)
+        .then(res => {
+            alert(`${JSON.stringify(res.data)}`)
         })
-        .catch(err=>alert(err))
+        .catch(err => alert(err))
     }
 
 
@@ -29,7 +28,7 @@ export default function SignUp(){
             <form onSubmit={handleSubmit}>
                 <div>
                     <label><b>User ID </b></label>
-                    <input type="text" name='userId' onChange={handleChange} /><br />
+                    <input type="text" name='username' onChange={handleChange} /><br />
 
                     <label htmlFor=""><b>Password </b></label>
                     <input type="text" name='password' onChange={handleChange} /><br />
