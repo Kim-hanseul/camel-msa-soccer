@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import tableStyles from '../common/style/table.module.css'
 
 const Table = ({columns, colspan, data}) => {  
@@ -15,7 +15,7 @@ const Table = ({columns, colspan, data}) => {
         <tbody>
                     {data.length==0 ?<td colSpan={colspan} className={tableStyles.td}> No data </td>
                     :data.map((user) =>(
-                     <tr className={tableStyles.tr} key={username} > 
+                     <tr className={tableStyles.tr} key={user.username} > 
                         <td className={tableStyles.td}>{user.username}</td>
                         <td className={tableStyles.td}>{user.password}</td>
                         <td className={tableStyles.td}>{user.name}</td>
